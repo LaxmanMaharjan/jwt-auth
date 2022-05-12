@@ -227,7 +227,7 @@ auth_blueprint.add_url_rule(
         )
 
 auth_blueprint.add_url_rule(
-        "/profile/logout",
+        "/auth/logout",
         view_func=logout_view,
         methods = ['POST']
         )
