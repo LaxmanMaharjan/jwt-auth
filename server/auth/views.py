@@ -181,6 +181,9 @@ class JWKSView(MethodView):
         except FileNotFoundError:
             return make_response(jsonify({'message':"file not found"})), 404
     
+class HomeView(MethodView):
+    def get(self):
+        return make_response(jsonify({"message":"Server running properly."}))
 
 # define the API resources
 registration_view = RegisterAPI.as_view('register_api')
@@ -188,6 +191,7 @@ login_view = LoginAPI.as_view('login_api')
 user_view = UserAPI.as_view('user_api')
 jwks_view = JWKSView.as_view('jwks')
 logout_view = LogoutAPI.as_view('logout')
+home_view = HomeView.as_view('home')
 
 # add Rules for API Endpoints
 auth_blueprint.add_url_rule(
@@ -219,4 +223,10 @@ auth_blueprint.add_url_rule(
         "/profile/logout",
         view_func=logout_view,
         methods = ['POST']
+        )
+
+auth_blueprint.add_url_rule(
+        '/',
+        view_func=home_view,
+        methods=['GET']
         )
