@@ -9,6 +9,9 @@ __pycache__/
 # pycache
 __pycache__/
 
+# migration
+migrations/
+
 # C extensions
 *.so
 
